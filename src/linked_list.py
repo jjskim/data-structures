@@ -55,18 +55,32 @@ class LinkedList(object):
             curr = curr.next
         return
 
-    def remove(self, node):
+    def remove(self, data):
         """Remove the given node from list."""
-        if node is self.head:
+        if data == self.head.data:
             self.head = self.head.next
             return
         else:
-            current_node = self.head.next
-            for i in range(self.size - 1):
-                if current_node is node:
-                    return current_node
-                current_node = current_node.next
+            curr = self.head.next
+            for i in range(self._counter - 1):
+                if curr is data:
+                    return curr
+                curr = curr.next
+            raise ValueError("Passed node not in list")
 
     def display(self):
         """Return a unicode string representation of the list."""
-        
+        to_string = "("
+        curr = self.head
+        if curr is not None:
+            to_string += str(curr.data)
+            curr = curr.next
+        while curr is not None:
+            to_string += (", " + str(curr.data))
+            curr = curr.next
+        to_string += ")"
+        return to_string
+
+    def __str__(self):
+        """Return a string representation of the list."""
+        return self.display()

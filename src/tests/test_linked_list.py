@@ -2,24 +2,6 @@
 
 import pytest
 
-# parameters = [
-#     ("  (", False),
-#     (")test", False),
-#     ("", True),
-#     ("hi())(", False),
-#     ("hi(hi)()", True),
-#     ("()()()(", False),
-#     (")()()()()()", False),
-#     ("()()()()()(())", True),
-#     ("()()()((()))()(())()", True)
-# ]
-
-
-# @pytest.mark.parametrize('n, result', parameters)
-# def test_valid_parentheses(n, result):
-#     """Test for valid_parentheses function."""
-#     from valid_parentheses import valid_parentheses
-#     assert valid_parentheses(n) == result
 
 def test_node_constructor():
     """Test for the Node constructor."""
@@ -152,6 +134,37 @@ def test_linked_list_takes_iterable_and_has_values():
         assert l.search(item).data == item
 
 
-def test_remove():
-    """."""
-    assert True
+def test_linked_list_remove_head():
+    """Test that the linked list constructor can accept an iterable."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(4)
+    l.remove(4)
+    assert l.head is None
+
+
+def test_linked_list_display():
+    """Test that the linked list displays a correct string."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(2)
+    l.push(3)
+    l.push(4)
+    assert l.display() == '(4, 3, 2)'
+
+
+def test_linked_list_length():
+    """Test that the len of the list returns correctly."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(1)
+    assert len(l) == 1
+
+
+def test_linked_list_display():
+    """Test that the __str__ returns exactly what the display method does."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(0)
+    l.push(1)
+    assert l.__str__() == l.display()
