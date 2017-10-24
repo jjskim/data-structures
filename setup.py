@@ -8,7 +8,7 @@ setup(
     package_dir={"": "src"},
     author="Joseph Kim",
     author_email="joseph.kim.kr@gmail.com",
-    py_modules=[],
+    py_modules=['linked_list'],
     install_requires=[],
     extras_require={
         "test": ["pytest", "pytest-cov", "pytest-watch", "tox"],
