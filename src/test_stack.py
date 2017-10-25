@@ -1,5 +1,7 @@
 """This is the test file for valid_parentheses.py."""
 
+import pytest
+
 
 def test_stack_constructor():
     """Test for the Stack constructor."""
@@ -43,3 +45,10 @@ def test_stack_len_returns_correct():
     list1 = [1, 2, 3, 4, 5, 6]
     s = Stack(list1)
     assert len(s) == len(list1)
+
+
+def test_stack_constructor_passed_non_iterable():
+    """Test constructor raises exception when passed non iterable."""
+    from stack import Stack
+    with pytest.raises(TypeError):
+        s = Stack(5)
