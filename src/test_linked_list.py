@@ -79,6 +79,22 @@ def test_linked_list_pop_empty_raises_exception():
         l.pop()
 
 
+def test_linked_list_init_with_noniterable_raises_exception():
+    """Test that the constructor when passed a non iterable raises an exception."""
+    from linked_list import LinkedList
+    with pytest.raises(TypeError):
+        l = LinkedList(5)
+
+
+def test_linked_list_remove_nonexistent_raises_exception():
+    """Test that remove, when passed a non existent value, raises an exception."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(5)
+    with pytest.raises(ValueError):
+        l.remove(0)
+
+
 def test_linked_list_size_returns_zero_for_empty_list():
     """Test that the size of an empty list returns correctly as 0."""
     from linked_list import LinkedList
