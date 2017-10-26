@@ -13,7 +13,7 @@ class Stack(object):
             for thing in iterable:
                 self.push(thing)
         elif iterable and not isinstance(iterable, (str, tuple, list)):
-            raise TypeError("Passed an invalid iterable value.")
+            raise TypeError("Passed an invalid iterable value")
 
     def push(self, value):
         """Add the passed value to the top of the stack."""
@@ -21,7 +21,10 @@ class Stack(object):
 
     def pop(self):
         """Return the top value from the stock."""
-        return self._linked_list.pop()
+        try:
+            return self._linked_list.pop()
+        except IndexError:
+            raise IndexError('Cannot pop from an empty stack')
 
     def __len__(self):
         """Return the length of the stack."""

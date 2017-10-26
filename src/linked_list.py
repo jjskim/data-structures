@@ -32,7 +32,7 @@ class LinkedList(object):
     def pop(self):
         """Pop the first value off the head of the list and return it."""
         if self.head is None:
-            raise IndexError('The list is empty')
+            raise IndexError('Cannot pop from an empty list')
         temp = self.head.data
         self.head = self.head.next
         self._counter -= 1
