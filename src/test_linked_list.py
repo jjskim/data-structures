@@ -1,4 +1,4 @@
-"""This is the test file for valid_parentheses.py."""
+"""This is the test file for linked_list.py."""
 
 import pytest
 
@@ -161,10 +161,21 @@ def test_linked_list_length():
     assert len(l) == 1
 
 
-def test_linked_list_display():
+def test_linked_list_string():
     """Test that the __str__ returns exactly what the display method does."""
     from linked_list import LinkedList
     l = LinkedList()
     l.push(0)
     l.push(1)
     assert l.__str__() == l.display()
+
+
+def test_linked_list_remove_middle_of_list():
+    """Test that the remove correctly removes from middle of list."""
+    from linked_list import LinkedList
+    l = LinkedList()
+    l.push(0)
+    l.push(1)
+    l.push(2)
+    l.remove(1)
+    assert len(l) == 2

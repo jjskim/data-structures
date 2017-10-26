@@ -61,11 +61,14 @@ class LinkedList(object):
             self.head = self.head.next
             return
         else:
-            curr = self.head.next
-            for i in range(self._counter - 1):
-                if curr is data:
-                    return curr
-                curr = curr.next
+            curr = self.head
+            for i in range(self._counter):
+                if curr.next is not None:
+                    if curr.next.data == data:
+                        curr.next = curr.next.next
+                        self._counter -= 1
+                        return
+                    curr = curr.next
             raise ValueError("Passed node not in list")
 
     def display(self):

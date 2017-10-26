@@ -42,3 +42,25 @@ An ordered set of data elements, each containing a link to its successor
 
 - \__str\__: O(n)
     - Returns a unicode string representing the list as if it were a tuple
+
+# Doubly-Linked-Lists
+
+An ordered set of data elements, each containing a link to its successor and its predecessor
+
+- Push: O(1)
+    - Insert the passed value at the "head" of the list
+
+- Pop: O(1)
+    - Remove and return the value at the head of the list
+
+- Append: O(1)
+    - Insert the passe vaue at the "tail" of the list
+
+- Shift: O(1)
+    - Remove and return the value at the tail of the list.
+
+- Remove: O(n)
+    - Remove the first node containing the passed value, else raises an Exception
+
+- \__len\__: O(1)
+    - Returns the number of items contained in the list
