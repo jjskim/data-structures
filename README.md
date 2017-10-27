@@ -64,3 +64,19 @@ An ordered set of data elements, each containing a link to its successor and its
 
 - \__len\__: O(1)
     - Returns the number of items contained in the list
+
+# Queues
+
+An ordered set of elements that follows a FIFO (first in first out) structure
+
+- Enqueue: O(1)
+    - Insert the passed value at the "back" of the queue
+
+- Enqueue: O(1)
+    - Remove and return the value at the "front" of the queue
+
+- Peek: O(1)
+    - Returns the value at the "front" of the queue, but does not remove it. If queue is empty, returns None
+
+- Size: O(1)
+    - Returns the number of elements in the queue.
