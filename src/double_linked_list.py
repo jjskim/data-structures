@@ -58,7 +58,8 @@ class DoublyLinkedList(LinkedList):
             raise IndexError('The list is empty')
         temp = self.tail.data
         self.tail = self.tail.prev
-        self.tail.next = None
+        if self.tail is not None:
+            self.tail.next = None
         self._counter -= 1
         if self._counter == 0:
             self.head = None

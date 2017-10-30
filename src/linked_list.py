@@ -35,7 +35,8 @@ class LinkedList(object):
             raise IndexError('Cannot pop from an empty list')
         temp = self.head.data
         self.head = self.head.next
-        self.head.prev = None
+        if self.head is not None:
+            self.head.prev = None
         self._counter -= 1
         return temp
 

@@ -22,13 +22,13 @@ class Deque(object):
 
     def pop(self):
         """Remove and return the value at the end of the deque."""
-        if self._dll.head is None:
+        if self._dll.tail is None:
             raise IndexError("Can't pop from an empty deque")
         return self._dll.shift()
 
     def popleft(self):
         """Remove and return the value at the front of the deque."""
-        if self._dll.tail is None:
+        if self._dll.head is None:
             raise IndexError("Can't popleft from an empty deque")
         return self._dll.pop()
 

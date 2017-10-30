@@ -117,3 +117,39 @@ def test_peekleft_does_not_remove_item_deque(empty_deque):
     size_before_peekleft = q.size()
     q.peek()
     assert q.size() == size_before_peekleft
+
+
+def test_appendleft_adds_item_to_front_of_deque(empty_deque):
+    """Test that appendleft adds the item to the front of the deque."""
+    q = empty_deque
+    q.appendleft(2)
+    q.append(3)
+    q.appendleft(4)
+    assert q.peekleft() == 4
+
+
+def test_pop_on_empty_deque_raises_exception(empty_deque):
+    """Test that a call on dequeue on empty queue raises exception."""
+    d = empty_deque
+    with pytest.raises(IndexError):
+        d.pop()
+
+
+def test_peek_left_on_empty_deque_returns_none(empty_deque):
+    """Test that a peekleft on an empty deque returns None."""
+    d = empty_deque
+    assert d.peek() is None
+
+
+def test_appendleft_then_pop_returns_value_at_front(empty_deque):
+    """Test that pop returns the value at front after appendleft."""
+    d = empty_deque
+    d.appendleft(1)
+    assert d.pop() == 1
+
+
+def test_append_then_popleft_returns_value_at_end(empty_deque):
+    """Test that pop returns the value at front after appendleft."""
+    d = empty_deque
+    d.append(1)
+    assert d.popleft() == 1
