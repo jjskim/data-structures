@@ -80,3 +80,28 @@ An ordered set of elements that follows a FIFO (first in first out) structure
 
 - Size: O(1)
     - Returns the number of elements in the queue.
+
+# Deque
+
+An ordered set of data elements that functions as a queue in both directions. Items can be added and removed at both ends, and their order is preserved
+
+- append: O(1)
+    - Insert the passed value at the end of the deque
+
+- appendleft: O(1)
+    - Insert the passed value at the front of the deque
+
+- pop: O(1)
+    - Remove and return the value at the end of the deque
+
+- popleft: O(1)
+    - Remove and return the value at the front of the deque
+
+- peek: O(1)
+    - Returns the value at the end of the deque, but does not remove it. If deque is empty, returns None
+
+- peekleft: O(1)
+    - Returns the value at the front of the deque, but does not remove it. If deque is empty, returns None
+
+- size: O(1)
+    - Returns the number of elements in the deque.
