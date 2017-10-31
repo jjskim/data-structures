@@ -105,3 +105,13 @@ An ordered set of data elements that functions as a queue in both directions. It
 
 - size: O(1)
     - Returns the number of elements in the deque.
+
+# Binary Heap
+
+An ordered tree like structure in which a parent value is always smaller than the child values.
+
+- push: O(log(n))
+    - Insert the value at the end of the heap, then resort to maintain the binary heap structure.
+
+- pop: O(log(n))
+    - Remove and return the smallest value (the root of the heap) and then resort the remaining the values to maintain the binary heap structure.
