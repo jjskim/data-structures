@@ -33,7 +33,7 @@ class BinaryHeap(object):
 
     def _percolate_down(self, hole, value):
         """Restore binary heap structure, starting from top-down."""
-        while hole * 2 < len(self._list):
+        while hole * 2 < len(self._list) - 1:
             left_index = 2 * hole
             right_index = left_index + 1
             target = 0
