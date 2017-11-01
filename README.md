@@ -115,3 +115,15 @@ An ordered tree like structure in which a parent value is always smaller than th
 
 - pop: O(log(n))
     - Remove and return the smallest value (the root of the heap) and then resort the remaining the values to maintain the binary heap structure.
+
+# Priority Queue
+
+An ordered queue where values are sorted based on their passed priority value (higher value = higher priority).
+- insert: O(1)
+    - Insert the passed value at its priority level, if given, else inserts it at the lowest priority.
+
+- pop: O(n log(n))
+    - Remove and return the highest priority value. If more than one value at the highest priority exists, then pop the most senior item at the priority level.
+
+- peek: O(n log(n))
+    - Return, but not remove, the highest priority value. If more than one value at the highest priority exists, then pop the most senior item at the priority level.
