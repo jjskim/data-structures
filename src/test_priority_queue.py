@@ -77,3 +77,34 @@ def test_that_priority_queue_remains_operable_with_multiple_actions(empty_prioqu
     b.pop()
     b.pop()
     assert b.peek() == 'flerg'
+
+
+def test_peek_does_not_remove_item(empty_prioque):
+    """Test that peek returns only the value, and does not remove the value."""
+    b = empty_prioque
+    b.insert('test')
+    b.peek()
+    assert b.pop() == 'test'
+
+
+def test_peek_and_pop_return_the_same_value(empty_prioque):
+    """Test that the value returned from pop and peek are both the same."""
+    b = empty_prioque
+    b.insert('test')
+    assert b.peek() == b.pop()
+
+
+def test_popping_last_item_removes_key_from_dictionary(empty_prioque):
+    """Test that popping the last value makes the priority queue empty."""
+    b = empty_prioque
+    b.insert('test')
+    b.pop()
+    assert not b._queues
+
+
+def test_pop_returns_item_with_most_seniority_if_both_have_same_priority(empty_prioque):
+    """Test that pop returns not only the highest priority, but the most senior item."""
+    b = empty_prioque
+    b.insert('older', 2)
+    b.insert('younger', 2)
+    assert b.pop() == 'older'

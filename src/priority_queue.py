@@ -17,14 +17,19 @@ class PriorityQueue(object):
 
     def pop(self):
         """Remove and return the value with the highest priority."""
+        if not self._queues:
+            raise IndexError("Cannot pop from an empty priority queue")
         for priority_level in sorted(self._queues, reverse=True):
             if len(self._queues[priority_level]) > 0:
-                return self._queues[priority_level].pop()
-        raise IndexError("Cannot pop from an empty priority queue")
+                value = self._queues[priority_level].pop()
+                if len(self._queues[priority_level]) == 0:
+                    self._queues.pop(priority_level, None)
+                return value
 
     def peek(self):
         """Return the value with the highest priority, without removing it."""
+        if not self._queues:
+            raise IndexError("Cannot peek at an empty priority queue")
         for priority_level in sorted(self._queues, reverse=True):
             if len(self._queues[priority_level]) > 0:
                 return self._queues[priority_level][-1]
-        raise IndexError("Cannot peek at an empty priority queue")
