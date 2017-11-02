@@ -127,3 +127,34 @@ An ordered queue where values are sorted based on their passed priority value (h
 
 - peek: O(n log(n))
     - Return, but not remove, the highest priority value. If more than one value at the highest priority exists, then pop the most senior item at the priority level.
+
+# Graph (Unweighted, directed)
+
+An collection of values with reference to their connections with each other. Connections between value are directed and are defined explicitly from starting point to ending point.
+
+- nodes: O(n)
+    - Return a list of all nodes contained in the graph
+
+- edges: O(n^2)
+    - Reeturn a list of all edges in the graph
+
+- add_node: O(1)
+    - Adds a new node to the graph if not present
+
+- add_edge: O(1)
+    - Add a new directed edge from node 1 to node 2
+
+- del_node: O(n)
+    - Deletes the node containing val from the graph, raises an error if no such node exists
+
+- del_edge: O(1)
+    - Deletes the directed edge from node 1 to node 2, raises an error if no such edge exists
+
+- has_node: O(1)
+    - Return True if node exists within the graph, False otherwise
+
+- neighbors: O(1)
+    - Return a list of all nodes the passed node can reach. Raise an error if passed node is not present in graph.
+
+- adjacent: O(1):
+    - Return True if there is an edge connecting node 1 and node 2, False otherwise. Raise an error if either node is not present in graph.

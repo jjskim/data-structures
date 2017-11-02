@@ -10,7 +10,7 @@ class Graph(object):
 
     def nodes(self):
         """Return a list of nodes in the graph."""
-        return self._edges.keys()
+        return list(self._edges.keys())
 
     def edges(self):
         """Return a list of all directed edges in the graph as tuples."""
@@ -25,9 +25,16 @@ class Graph(object):
         self._edges.setdefault(val, [])
 
     def add_edge(self, val1, val2):
-        """Add a directed edge to the graph, from node 1 to node 2."""
-        self._edges.setdefault(val1, [])
-        self._edges.setdefault(val2, [])
+        """
+        Add a directed edge to the graph, from node 1 to node 2.
+        If edge already exists, overwrites it.
+        """
+        self.add_node(val1)
+        self.add_node(val2)
+        try:
+            self.del_edge(val1, val2)
+        except ValueError:
+            pass
         self._edges[val1].append(val2)
 
     def del_edge(self, val1, val2):
@@ -39,13 +46,12 @@ class Graph(object):
 
     def del_node(self, val):
         """Delete the node from the graph."""
-        try:
-            self._edges.pop(val, None)
-            for node in self._edges.keys():
-                if val in self._edges[node]:
-                    self.del_edge(node, val)
-        except ValueError:
+        if val not in self._edges:
             raise ValueError('Node does not exist.')
+        self._edges.pop(val, None)
+        for node in self._edges.keys():
+            if val in self._edges[node]:
+                self.del_edge(node, val)
 
     def has_node(self, val):
         """Return boolean if passed node is in graph."""
@@ -62,7 +68,7 @@ class Graph(object):
 
     def adjacent(self, val1, val2):
         """
-        Return a boolean if there exists an edge connecting passed nodes.
+        Return a boolean if there exists a directed edge from val1 to val2.
         Raise a ValueError if either of passed nodes do not exist in graph.
         """
         if not self.has_node(val1) or not self.has_node(val2):
