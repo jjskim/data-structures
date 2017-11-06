@@ -41,6 +41,8 @@ class Graph(object):
         """Delete the directed edge from the graph."""
         try:
             self._edges[val1].remove(val2)
+        except KeyError:
+            raise KeyError(str(val1) + ' not present in graph')
         except ValueError:
             raise ValueError('No existing edge between nodes.')
 
