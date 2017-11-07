@@ -217,7 +217,7 @@ def test_that_breadth_first_returns_proper_output_with_loop(empty_graph):
     d.add_edge(4, 8)
     d.add_edge(5, 9)
     d.add_edge(3, 6)
-    d.add_edge(6, 1)
+    d.add_edge(4, 3)
     assert d.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
@@ -228,9 +228,9 @@ def test_that_depth_first_returns_proper_output_with_loop(empty_graph):
     d.add_edge(1, 3)
     d.add_edge(2, 4)
     d.add_edge(2, 5)
+    d.add_edge(4, 3)
     d.add_edge(4, 7)
     d.add_edge(4, 8)
     d.add_edge(5, 9)
     d.add_edge(3, 6)
-    d.add_edge(6, 1)
     assert d.depth_first_traversal(1) == [1, 2, 4, 7, 8, 5, 9, 3, 6]

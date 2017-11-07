@@ -86,13 +86,11 @@ class Graph(object):
         """
         if start_val not in self._edges:
             raise KeyError(str(start_val) + " does not exist")
-        visited = set()
         breadth_queue = [start_val]
         bft = []
-        while len(breadth_queue) > 0:
+        while breadth_queue:
             item = breadth_queue.pop(0)
-            if item not in visited:
-                visited.add(item)
+            if item not in bft:
                 bft.append(item)
                 breadth_queue += self._edges[item]
         return bft
@@ -109,7 +107,7 @@ class Graph(object):
         visited.add(start_val)
         depth_stack = [start_val]
         dft = []
-        while len(depth_stack) > 0:
+        while depth_stack:
             item = depth_stack.pop()
             dft.append(item)
             for neighbor in reversed(self._edges[item]):
