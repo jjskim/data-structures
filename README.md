@@ -158,3 +158,9 @@ An collection of values with reference to their connections with each other. Con
 
 - adjacent: O(1):
     - Return True if there is an edge connecting node 1 and node 2, False otherwise. Raise an error if either node is not present in graph.
+
+- breadth_first_traversal: O(n)
+    - Return a list containing elements in the graph, with ordering based on a breadth-first traversal, starting from the passed start value. Raises KeyError if starting value is not in graph.
+
+- depth_first_traversal: O(n):
+    - Return a list containing elements in the graph, with ordering based on a depth-first traversal, starting from the passed start value. Raises KeyError if starting value is not in graph.
