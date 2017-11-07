@@ -153,3 +153,45 @@ def test_adjacent_returns_true_if_either_node_can_reach_other(empty_graph):
     d = empty_graph
     d.add_edge(1, 2)
     assert d.adjacent(2, 1)
+
+
+def test_that_breadth_first_raises_error_with_empty_graph(empty_graph):
+    """Raise a KeyError on a empty graph."""
+    d = empty_graph
+    with pytest.raises(KeyError):
+        d.breadth_first_traversal(2)
+
+
+def test_that_depth_first_raises_error_when_looking_at_empty_graph(empty_graph):
+    """Raise KeyError on an empty graph."""
+    d = empty_graph
+    with pytest.raises(KeyError):
+        d.depth_first_traversal(2)
+
+
+def test_that_breadth_first_returns_proper_output(empty_graph):
+    """Test that expected output is returned when ran."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(4, 7)
+    d.add_edge(4, 8)
+    d.add_edge(5, 9)
+    d.add_edge(3, 6)
+    assert d.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def test_that_depth_first_returns_proper_output(empty_graph):
+    """Test that expected output is returned when ran."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(4, 7)
+    d.add_edge(4, 8)
+    d.add_edge(5, 9)
+    d.add_edge(3, 6)
+    assert d.depth_first_traversal(1) == [1, 2, 4, 7, 8, 5, 9, 3, 6]
