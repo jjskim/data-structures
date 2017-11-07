@@ -77,3 +77,43 @@ class Graph(object):
             raise ValueError('At least one node not present in graph.')
         else:
             return val2 in self.neighbors(val1) or val1 in self.neighbors(val2)
+
+    def breadth_first_traversal(self, start_val):
+        """
+        Return a list containing elements in the graph, with ordering based on
+        a breadth-first traversal, starting from the passed start value.
+
+        """
+        if start_val not in self._edges:
+            raise KeyError(str(start_val) + " does not exist")
+        visited = set()
+        breadth_queue = [start_val]
+        bft = []
+        while len(breadth_queue) > 0:
+            item = breadth_queue.pop(0)
+            if item not in visited:
+                visited.add(item)
+                bft.append(item)
+                breadth_queue += self._edges[item]
+        return bft
+
+    def depth_first_traversal(self, start_val):
+        """
+        Return a list containing elements in the graph, with ordering based on
+        a depth-first traversal, starting from the passed start value.
+
+        """
+        if start_val not in self._edges:
+            raise KeyError(str(start_val) + " does not exist")
+        visited = set()
+        visited.add(start_val)
+        depth_stack = [start_val]
+        dft = []
+        while len(depth_stack) > 0:
+            item = depth_stack.pop()
+            dft.append(item)
+            for neighbor in reversed(self._edges[item]):
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    depth_stack.append(neighbor)
+        return dft
