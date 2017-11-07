@@ -113,6 +113,15 @@ def test_del_edge_removes_edge_in_correct_direction(empty_graph):
     assert d.edges() == [(2, 1)]
 
 
+def test_del_edge_raises_keyerror_for_non_existent_val1(empty_graph):
+    """Test that del_edge raises KeyError for nonexistent val1."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    d.add_edge(2, 1)
+    with pytest.raises(KeyError):
+        d.del_edge(3, 1)
+
+
 def test_has_node_correctly_returns_true(empty_graph):
     """Test has_node returns True if node is present."""
     d = empty_graph
@@ -162,7 +171,7 @@ def test_that_breadth_first_raises_error_with_empty_graph(empty_graph):
         d.breadth_first_traversal(2)
 
 
-def test_that_depth_first_raises_error_when_looking_at_empty_graph(empty_graph):
+def test_that_depth_first_raises_error_when_looking_empty_graph(empty_graph):
     """Raise KeyError on an empty graph."""
     d = empty_graph
     with pytest.raises(KeyError):
@@ -194,4 +203,34 @@ def test_that_depth_first_returns_proper_output(empty_graph):
     d.add_edge(4, 8)
     d.add_edge(5, 9)
     d.add_edge(3, 6)
+    assert d.depth_first_traversal(1) == [1, 2, 4, 7, 8, 5, 9, 3, 6]
+
+
+def test_that_breadth_first_returns_proper_output_with_loop(empty_graph):
+    """Test that expected output is returned when ran."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(4, 7)
+    d.add_edge(4, 8)
+    d.add_edge(5, 9)
+    d.add_edge(3, 6)
+    d.add_edge(6, 1)
+    assert d.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+def test_that_depth_first_returns_proper_output_with_loop(empty_graph):
+    """Test that expected output is returned when ran."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(4, 7)
+    d.add_edge(4, 8)
+    d.add_edge(5, 9)
+    d.add_edge(3, 6)
+    d.add_edge(6, 1)
     assert d.depth_first_traversal(1) == [1, 2, 4, 7, 8, 5, 9, 3, 6]

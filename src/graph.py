@@ -80,7 +80,7 @@ class Graph(object):
 
     def breadth_first_traversal(self, start_val):
         """
-        Return a list containing elements in the graph, with ordering based on
+        Return a list containing elements in the graph, with ordering based on.
         a breadth-first traversal, starting from the passed start value.
 
         """
@@ -99,7 +99,7 @@ class Graph(object):
 
     def depth_first_traversal(self, start_val):
         """
-        Return a list containing elements in the graph, with ordering based on
+        Return a list containing elements in the graph, with ordering based on.
         a depth-first traversal, starting from the passed start value.
 
         """
@@ -117,3 +117,110 @@ class Graph(object):
                     visited.add(neighbor)
                     depth_stack.append(neighbor)
         return dft
+
+
+if __name__ == '__main__':  # pragma: no cover
+    import time
+
+    d = Graph()
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(3, 6)
+    d.add_edge(3, 7)
+    d.add_edge(4, 8)
+    d.add_edge(4, 9)
+    d.add_edge(5, 10)
+    d.add_edge(5, 11)
+    d.add_edge(6, 12)
+    d.add_edge(6, 13)
+    d.add_edge(7, 14)
+    d.add_edge(7, 15)
+
+    start_bft = time.time()
+    bft = d.breadth_first_traversal(1)
+    end_bft = time.time()
+
+    start_dft = time.time()
+    dft = d.depth_first_traversal(1)
+    end_dft = time.time()
+
+    print()
+    print("For a graph representing a complete tree of depth 4:")
+    print()
+    print('\tBreadth first traversal: ' + str(bft))
+    print('\tTime elapsed: ' + str(end_bft - start_bft))
+    print()
+    print('\tDepth first traversal: ' + str(dft))
+    print('\tTime elapsed: ' + str(end_dft - start_dft))
+    print()
+
+    d = Graph()
+    d.add_edge(1, 2)
+    d.add_edge(2, 3)
+    d.add_edge(3, 4)
+    d.add_edge(4, 5)
+    d.add_edge(5, 6)
+    d.add_edge(6, 7)
+    d.add_edge(7, 8)
+    d.add_edge(8, 9)
+    d.add_edge(9, 10)
+
+    start_bft = time.time()
+    bft = d.breadth_first_traversal(1)
+    end_bft = time.time()
+
+    start_dft = time.time()
+    dft = d.depth_first_traversal(1)
+    end_dft = time.time()
+
+    print()
+    print("For a graph representing a single chain of edges:")
+    print()
+    print('\tBreadth first traversal: ' + str(bft))
+    print('\tTime elapsed: ' + str(end_bft - start_bft))
+    print()
+    print('\tDepth first traversal: ' + str(dft))
+    print('\tTime elapsed: ' + str(end_dft - start_dft))
+    print()
+
+    d = Graph()
+    d.add_edge(1, 2)
+    d.add_edge(1, 3)
+    d.add_edge(1, 4)
+    d.add_edge(1, 5)
+    d.add_edge(2, 1)
+    d.add_edge(2, 3)
+    d.add_edge(2, 4)
+    d.add_edge(2, 5)
+    d.add_edge(3, 1)
+    d.add_edge(3, 2)
+    d.add_edge(3, 4)
+    d.add_edge(3, 5)
+    d.add_edge(4, 1)
+    d.add_edge(4, 2)
+    d.add_edge(4, 3)
+    d.add_edge(4, 5)
+    d.add_edge(5, 1)
+    d.add_edge(5, 2)
+    d.add_edge(5, 3)
+    d.add_edge(5, 4)
+
+    start_bft = time.time()
+    bft = d.breadth_first_traversal(1)
+    end_bft = time.time()
+
+    start_dft = time.time()
+    dft = d.depth_first_traversal(1)
+    end_dft = time.time()
+
+    print()
+    print("For a graph representing 5 nodes all connected to each other:")
+    print()
+    print('\tBreadth first traversal: ' + str(bft))
+    print('\tTime elapsed: ' + str(end_bft - start_bft))
+    print()
+    print('\tDepth first traversal: ' + str(dft))
+    print('\tTime elapsed: ' + str(end_dft - start_dft))
+    print()
