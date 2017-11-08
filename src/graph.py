@@ -7,6 +7,7 @@ class Graph(object):
     def __init__(self):
         """Construct a single instance of unweighted, directed graph."""
         self._edges = {}
+        self._weights = {}
 
     def nodes(self):
         """Return a list of nodes in the graph."""
@@ -24,11 +25,16 @@ class Graph(object):
         """Add a node to the graph."""
         self._edges.setdefault(val, [])
 
-    def add_edge(self, val1, val2):
+    def add_edge(self, val1, val2, weight):
+        r"""Add a directed edge to the graph, from node 1 to node 2.
+
+        If edge already exists, overwrites it. Adds edge to weight\
+        dictionary with it's weight set as the value.
         """
-        Add a directed edge to the graph, from node 1 to node 2.
-        If edge already exists, overwrites it.
-        """
+        try:
+            int(weight)
+        except ValueError:
+            raise ValueError('Weight must be an integer.')
         self.add_node(val1)
         self.add_node(val2)
         try:
@@ -36,15 +42,20 @@ class Graph(object):
         except ValueError:
             pass
         self._edges[val1].append(val2)
+        self._weights.setdefault((val1, val2), weight)
 
     def del_edge(self, val1, val2):
-        """Delete the directed edge from the graph."""
+        r"""Delete the directed edge from the graph.
+
+        Removes edge key from weights
+        """
         try:
             self._edges[val1].remove(val2)
         except KeyError:
             raise KeyError(str(val1) + ' not present in graph')
         except ValueError:
             raise ValueError('No existing edge between nodes.')
+        del self._weights[(val1, val2)]
 
     def del_node(self, val):
         """Delete the node from the graph."""
