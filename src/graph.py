@@ -76,7 +76,7 @@ class Graph(object):
         if not self.has_node(val1) or not self.has_node(val2):
             raise ValueError('At least one node not present in graph.')
         else:
-            return val2 in self.neighbors(val1) or val1 in self.neighbors(val2)
+            return val2 in self.neighbors(val1)
 
     def breadth_first_traversal(self, start_val):
         """

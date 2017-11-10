@@ -157,11 +157,11 @@ def test_adjacent_raises_exception_if_at_least_1_node_nonexistent(empty_graph):
         d.adjacent(1, 2)
 
 
-def test_adjacent_returns_true_if_either_node_can_reach_other(empty_graph):
-    """Test that adjacent returns true if either node can reach other."""
+def test_adjacent_returns_true_if_node1_can_reach_node2(empty_graph):
+    """Test that adjacent returns true if node1 can reach node2."""
     d = empty_graph
     d.add_edge(1, 2)
-    assert d.adjacent(2, 1)
+    assert d.adjacent(1, 2)
 
 
 def test_that_breadth_first_raises_error_with_empty_graph(empty_graph):
