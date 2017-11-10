@@ -164,6 +164,13 @@ def test_adjacent_returns_true_if_node1_can_reach_node2(empty_graph):
     assert d.adjacent(1, 2)
 
 
+def test_adjacent_returns_true_only_if_node1_can_reach_node2(empty_graph):
+    """Test that adjacent returns false if node1 cannot reach node2."""
+    d = empty_graph
+    d.add_edge(1, 2)
+    assert not d.adjacent(2, 1)
+
+
 def test_that_breadth_first_raises_error_with_empty_graph(empty_graph):
     """Raise a KeyError on a empty graph."""
     d = empty_graph
