@@ -27,6 +27,7 @@ class Graph(object):
     def add_edge(self, val1, val2):
         """
         Add a directed edge to the graph, from node 1 to node 2.
+
         If edge already exists, overwrites it.
         """
         self.add_node(val1)
@@ -62,6 +63,7 @@ class Graph(object):
     def neighbors(self, val):
         """
         Return a list of all directed edges starting from passed node.
+
         Raise a ValueError if passed node does not exist in graph.
         """
         if self.has_node(val):
@@ -71,6 +73,7 @@ class Graph(object):
     def adjacent(self, val1, val2):
         """
         Return a boolean if there exists a directed edge from val1 to val2.
+
         Raise a ValueError if either of passed nodes do not exist in graph.
         """
         if not self.has_node(val1) or not self.has_node(val2):
@@ -80,8 +83,9 @@ class Graph(object):
 
     def breadth_first_traversal(self, start_val):
         """
-        Return a list containing elements in the graph, with ordering based on.
-        a breadth-first traversal, starting from the passed start value.
+        Return a list containing elements in the graph.
+
+        Order is breadth-first traversal, starting from the passed start value.
 
         """
         if start_val not in self._edges:
@@ -97,8 +101,9 @@ class Graph(object):
 
     def depth_first_traversal(self, start_val):
         """
-        Return a list containing elements in the graph, with ordering based on.
-        a depth-first traversal, starting from the passed start value.
+        Return a list containing elements in the graph.
+
+        Order is depth-first traversal, starting from the passed start value.
 
         """
         if start_val not in self._edges:
