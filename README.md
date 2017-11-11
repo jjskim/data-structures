@@ -128,9 +128,9 @@ An ordered queue where values are sorted based on their passed priority value (h
 - peek: O(n log(n))
     - Return, but not remove, the highest priority value. If more than one value at the highest priority exists, then pop the most senior item at the priority level.
 
-# Graph (Unweighted, directed)
+# Graph (Weighted and Directed)
 
-An collection of values with reference to their connections with each other. Connections between value are directed and are defined explicitly from starting point to ending point.
+A collection of values with reference to their connections with each other. Connections between value are directed and are defined explicitly from starting point to ending point.
 
 - nodes: O(n)
     - Return a list of all nodes contained in the graph
@@ -142,7 +142,7 @@ An collection of values with reference to their connections with each other. Con
     - Adds a new node to the graph if not present
 
 - add_edge: O(1)
-    - Add a new directed edge from node 1 to node 2
+    - Add a new directed edge from node 1 to node 2, weight is optional and defaults to 0.
 
 - del_node: O(n)
     - Deletes the node containing val from the graph, raises an error if no such node exists
