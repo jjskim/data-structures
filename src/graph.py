@@ -1,11 +1,11 @@
-"""Module to define an unweighted, directed graph."""
+"""Module to define an weighted, directed graph."""
 
 
 class Graph(object):
-    """Define an unweighted, directed graph class."""
+    """Define an weighted, directed graph class."""
 
     def __init__(self):
-        """Construct a single instance of unweighted, directed graph."""
+        """Construct a single instance of weighted, directed graph."""
         self._edges = {}
 
     def nodes(self):
@@ -22,9 +22,9 @@ class Graph(object):
 
     def add_node(self, val):
         """Add a node to the graph."""
-        self._edges.setdefault(val, [])
+        self._edges.setdefault(val, {})
 
-    def add_edge(self, val1, val2):
+    def add_edge(self, val1, val2, weight=0):
         """
         Add a directed edge to the graph, from node 1 to node 2.
 
@@ -32,27 +32,21 @@ class Graph(object):
         """
         self.add_node(val1)
         self.add_node(val2)
-        try:
-            self.del_edge(val1, val2)
-        except ValueError:
-            pass
-        self._edges[val1].append(val2)
+        self._edges[val1][val2] = weight
 
     def del_edge(self, val1, val2):
         """Delete the directed edge from the graph."""
         try:
-            self._edges[val1].remove(val2)
+            del self._edges[val1][val2]
         except KeyError:
-            raise KeyError(str(val1) + ' not present in graph')
-        except ValueError:
-            raise ValueError('No existing edge between nodes.')
+            raise KeyError('No existing edge between nodes.')
 
     def del_node(self, val):
         """Delete the node from the graph."""
         if val not in self._edges:
             raise ValueError('Node does not exist.')
         self._edges.pop(val, None)
-        for node in self._edges.keys():
+        for node in self._edges:
             if val in self._edges[node]:
                 self.del_edge(node, val)
 
@@ -96,7 +90,7 @@ class Graph(object):
             item = breadth_queue.pop(0)
             if item not in bft:
                 bft.append(item)
-                breadth_queue += self._edges[item]
+                breadth_queue += sorted(self._edges[item])
         return bft
 
     def depth_first_traversal(self, start_val):
@@ -115,7 +109,7 @@ class Graph(object):
         while depth_stack:
             item = depth_stack.pop()
             dft.append(item)
-            for neighbor in reversed(self._edges[item]):
+            for neighbor in reversed(sorted(self._edges[item])):
                 if neighbor not in visited:
                     visited.add(neighbor)
                     depth_stack.append(neighbor)
