@@ -45,10 +45,10 @@ class Graph(object):
         """Delete the node from the graph."""
         if val not in self._edges:
             raise ValueError('Node does not exist.')
-        self._edges.pop(val, None)
+        del self._edges[val]
         for node in self._edges:
             if val in self._edges[node]:
-                self.del_edge(node, val)
+                del self._edges[node][val]
 
     def has_node(self, val):
         """Return boolean if passed node is in graph."""
@@ -61,7 +61,7 @@ class Graph(object):
         Raise a ValueError if passed node does not exist in graph.
         """
         if self.has_node(val):
-            return self._edges[val]
+            return sorted(self._edges[val])
         raise ValueError('Node does not exist.')
 
     def adjacent(self, val1, val2):

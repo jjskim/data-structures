@@ -147,7 +147,7 @@ def test_neigbors_correctly_displays_edges_starting_passed_node(empty_graph):
     d = empty_graph
     d.add_edge(1, 2)
     d.add_edge(2, 1)
-    assert d.neighbors(1)
+    assert d.neighbors(1) == [2]
 
 
 def test_adjacent_raises_exception_if_at_least_1_node_nonexistent(empty_graph):
